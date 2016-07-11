@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "XYHomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    XYHomeViewController * homeVC = [XYHomeViewController shareXYHomeViewController];
+//    MYRootNavigationViewController * homeNVC = [[MYRootNavigationViewController alloc] initWithRootViewController:homeVC];
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = homeVC;
+    
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
