@@ -132,7 +132,6 @@ static NSString * home_cell_key = @"home_cell_key";
 {
     
     
-    self.date = [NSDate date];
     self.groupArray = nil;
     [self.collectionView reloadData];
 
@@ -146,6 +145,9 @@ static NSString * home_cell_key = @"home_cell_key";
     
     //为了体现高科技 延时1秒 ，没其他任何 作用 不要疑惑
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        self.date = [NSDate date];
+
         
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             
@@ -186,6 +188,7 @@ static NSString * home_cell_key = @"home_cell_key";
                         NSLog(@" -- %@",array1);
                         
                         NSString * newStr = @"";
+                        
                         for (NSString * string1 in array1) {
                             
                             NSString * result = [string1 componentsSeparatedByString:@"_"].firstObject;
@@ -196,8 +199,9 @@ static NSString * home_cell_key = @"home_cell_key";
                             result = [NSString stringWithFormat:@"%@%%",[nFormat stringFromNumber:@(result.doubleValue * 100)]];
                             
                             newStr = [newStr stringByAppendingFormat:@"\n%@",[NSString stringWithFormat:@"%@:%@",[string1 componentsSeparatedByString:@"_"].lastObject,result]];
+                            
                         }
-                        NSLog(@" -- %@",newStr);
+                        
                         newStr = [newStr stringByReplacingOccurrencesOfString:@"^\n" withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, newStr.length)];
                         
                         [self.groupArray addObject:newStr];
@@ -243,24 +247,24 @@ static NSString * home_cell_key = @"home_cell_key";
 
 -(void) subZMQ
 {
-    ZMQContext *ctx = [[ZMQContext alloc] initWithIOThreads:1];
-    ZMQSocket *requester = [ctx socketWithType:ZMQ_SUB];
-    BOOL didConnect = [requester connectToEndpoint:ZMQ_TCP];
-    BOOL didSub =  [requester subscribeAll];
-    
-    if (!didConnect) {
-        NSLog(@"*** Failed to connect to endpoint [%@].", ZMQ_TCP);
-    }
-    if (!didSub) {
-        NSLog(@"*** Failed to subing");
-    }
-    
-    while (1) {
-        NSData *reply = [requester receiveDataWithFlags:0];
-        NSString *text = [[NSString alloc] initWithData:reply encoding:NSUTF8StringEncoding];
-        NSLog(@"Received reply %@", text);
-        
-    }
+//    ZMQContext *ctx = [[ZMQContext alloc] initWithIOThreads:1];
+//    ZMQSocket *requester = [ctx socketWithType:ZMQ_SUB];
+//    BOOL didConnect = [requester connectToEndpoint:ZMQ_TCP];
+//    BOOL didSub =  [requester subscribeAll];
+//    
+//    if (!didConnect) {
+//        NSLog(@"*** Failed to connect to endpoint [%@].", ZMQ_TCP);
+//    }
+//    if (!didSub) {
+//        NSLog(@"*** Failed to subing");
+//    }
+//    
+//    while (1) {
+//        NSData *reply = [requester receiveDataWithFlags:0];
+//        NSString *text = [[NSString alloc] initWithData:reply encoding:NSUTF8StringEncoding];
+//        NSLog(@"Received reply %@", text);
+//        
+//    }
     
 }
 
@@ -314,6 +318,11 @@ static NSString * home_cell_key = @"home_cell_key";
 {
     XYHomeCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:home_cell_key forIndexPath:indexPath];
     cell.label.text = self.groupArray[indexPath.row];
+    
+    NSString * string = [cell.label.text componentsSeparatedByString:@":"].lastObject;
+    
+    cell.isSuccess = [string isEqualToString:@"66.6%"];
+    
     return cell;
 }
 

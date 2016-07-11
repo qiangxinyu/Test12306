@@ -11,4 +11,6 @@
 @interface XYHomeCollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *label;
 
+@property (nonatomic, assign)BOOL  isSuccess;
+
 @end

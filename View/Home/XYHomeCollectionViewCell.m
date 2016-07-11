@@ -15,4 +15,16 @@
     // Initialization code
 }
 
+- (void)setIsSuccess:(BOOL)isSuccess
+{
+    _isSuccess = isSuccess;
+    
+    
+    if (isSuccess) {
+        self.backgroundColor = kRGB(117, 235, 127);
+    } else {
+        self.backgroundColor = kRGB(238, 238, 238);
+    }
+}
+
 @end
