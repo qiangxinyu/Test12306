@@ -289,6 +289,27 @@ static NSString * home_cell_key = @"home_cell_key";
     
     self.imageView.image = [UIImage imageWithData:self.data];
     
+    [self deleteCookies];
+    
+}
+
+//删除全部cookies
+-(void)deleteCookies{
+    for (NSHTTPCookie *cookie in [[NSHTTPCookieStorage sharedHTTPCookieStorage]cookies]) {
+        [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+    }
+    NSLog(@"删除完成");
+}
+//根据url和name删除cookie
+-(void)deleteCookie:(NSString *)cookieName url:(NSURL *)url{
+    //根据url找到所属的cookie集合
+    NSArray *cookies = [[NSHTTPCookieStorage sharedHTTPCookieStorage]cookiesForURL:url];
+    for (NSHTTPCookie *cookie in cookies) {
+        if([cookie.name isEqualToString:cookieName]){
+            [[NSHTTPCookieStorage sharedHTTPCookieStorage] deleteCookie:cookie];
+            NSLog(@"删除cookie:%@",cookieName);
+        }
+    }
 }
 
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace
