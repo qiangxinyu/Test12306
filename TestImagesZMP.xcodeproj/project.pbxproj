@@ -60,6 +60,7 @@
 		29267EF31D336F8B001C4ACF /* fail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29267EE41D336F8B001C4ACF /* fail@2x.png */; };
 		29267EF41D336F8B001C4ACF /* loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29267EE51D336F8B001C4ACF /* loading@2x.png */; };
 		29267EF51D336F8B001C4ACF /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29267EE61D336F8B001C4ACF /* success@2x.png */; };
+		29372FF11D3488B500FF678D /* XYNetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 29372FF01D3488B500FF678D /* XYNetTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -171,6 +172,8 @@
 		29267EE41D336F8B001C4ACF /* fail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fail@2x.png"; sourceTree = "<group>"; };
 		29267EE51D336F8B001C4ACF /* loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loading@2x.png"; sourceTree = "<group>"; };
 		29267EE61D336F8B001C4ACF /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "success@2x.png"; sourceTree = "<group>"; };
+		29372FEF1D3488B500FF678D /* XYNetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYNetTool.h; sourceTree = "<group>"; };
+		29372FF01D3488B500FF678D /* XYNetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYNetTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,7 @@
 				29267E5B1D335B3B001C4ACF /* MJRefresh */,
 				29267EBF1D336E28001C4ACF /* View */,
 				29267E4B1D334685001C4ACF /* Controller */,
+				29372FEE1D3488AB00FF678D /* Tool */,
 				29267E331D33463D001C4ACF /* TestImagesZMP */,
 				29267E321D33463D001C4ACF /* Products */,
 			);
@@ -485,6 +489,15 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		29372FEE1D3488AB00FF678D /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				29372FEF1D3488B500FF678D /* XYNetTool.h */,
+				29372FF01D3488B500FF678D /* XYNetTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -600,6 +613,7 @@
 				29267EEB1D336F8B001C4ACF /* MASLayoutConstraint.m in Sources */,
 				29267E9B1D335B3B001C4ACF /* MJRefreshStateHeader.m in Sources */,
 				29267E981D335B3B001C4ACF /* MJRefreshBackStateFooter.m in Sources */,
+				29372FF11D3488B500FF678D /* XYNetTool.m in Sources */,
 				29267E931D335B3B001C4ACF /* MJRefreshAutoGifFooter.m in Sources */,
 				29267E541D3346BA001C4ACF /* MYRootViewController.m in Sources */,
 				29267E361D33463D001C4ACF /* main.m in Sources */,
